@@ -18,3 +18,19 @@
     }
   }
 }
+
+Key mapping:
+	•	ID = the List item ID from the trigger (ID)
+	•	UPN = body('Parse_JSON')?['value'][0]?['userPrincipalName']
+	•	EntraObjectId = …['id']
+	•	DisplayName = …['displayName']
+	•	MailNickname = …['mailNickname']
+	•	Department = …['department']
+	•	JobTitle = …['jobTitle']
+	•	Optional: Status = Success
+
+7) NO → Update item with error status
+
+Still use Update item, but set:
+	•	Status = NotFound (0 results) or MultipleMatches (>1)
+	•	Error = something like Email did not resolve to a unique Entra user
