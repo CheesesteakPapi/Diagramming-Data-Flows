@@ -1,0 +1,104 @@
+SOP Final Review Prompt
+You are conducting a comprehensive final review of a Standard Operating Procedure (SOP) before it proceeds to blue folder clearance through ORAP for AD1-level signature and agency-wide dissemination.
+Document Context
+	∙	Classification Level: AD1 (Assistant Director Level 1) - agency-wide authority
+	∙	Sensitivity: High-profile topic with active media scrutiny and anticipated Congressional hearing attention
+	∙	Clearance Status:
+	∙	✓ ERO/HSI component review complete
+	∙	✓ OPLA (Office of Principal Legal Advisor) review complete
+	∙	✓ ERO Front Office clearance obtained
+	∙	⏳ OCIO final review before ORAP blue folder submission
+	∙	Timeline: Compressed suspense requiring expedited but thorough review
+Review Objectives
+Perform a final validation that identifies any critical issues requiring correction before the document enters the formal blue folder process. This is the last opportunity to catch problems before senior leadership review.
+
+Review Criteria
+1. COMPLETENESS CHECK
+Verify the SOP includes all required elements:
+	∙	Purpose and scope clearly defined
+	∙	Roles and responsibilities explicitly assigned (offices, components, positions)
+	∙	Authority/legal basis documented
+	∙	Definitions section for specialized terms
+	∙	Step-by-step procedures with clear sequencing
+	∙	Documentation and recordkeeping requirements
+	∙	Compliance and audit provisions
+	∙	Effective date and review cycle
+	∙	Points of contact for questions/clarification
+	∙	References to related policies, directives, or legal authorities
+Flag: Missing critical sections that could undermine implementation or create compliance gaps
+
+2. GAP ANALYSIS
+Identify logical, procedural, or policy gaps:
+	∙	Process gaps: Are there scenarios/edge cases not addressed?
+	∙	Decision points: Are escalation paths and approval authorities clear at every decision node?
+	∙	Cross-component coordination: Are handoffs between ERO, HSI, OPLA, OCIO, and other offices clearly defined?
+	∙	Exception handling: What happens when standard procedures cannot be followed?
+	∙	Resource requirements: Are technology, staffing, or system dependencies identified?
+	∙	Timeline requirements: Are response timeframes and deadlines realistic and specified?
+Flag: Ambiguities that could lead to inconsistent implementation or operational failures
+
+3. LANGUAGE & CLARITY
+Assess precision and accessibility:
+	∙	Directive language: Use “shall” for mandatory requirements, “should” for recommended practices, “may” for discretionary actions
+	∙	Active voice: Procedures written with clear actors (“The Field Office Director shall…” not “Approval shall be obtained…”)
+	∙	Plain language: Technical/legal terms defined; bureaucratic jargon minimized
+	∙	Consistency: Terms, acronyms, and role titles used consistently throughout
+	∙	Unambiguous instructions: No vague terms like “as appropriate,” “timely,” “reasonable” without definition
+Flag: Language that could be misinterpreted or creates compliance ambiguity
+
+4. STRUCTURE & ORGANIZATION
+Evaluate logical flow and usability:
+	∙	Logical progression: Does the document follow a clear narrative from purpose → procedures → compliance?
+	∙	Section hierarchy: Are headings/subheadings properly nested and numbered?
+	∙	Cross-references: Are internal references accurate (section numbers, appendices)?
+	∙	Findability: Can users quickly locate relevant procedures for their role?
+	∙	Formatting consistency: Professional appearance with consistent spacing, fonts, numbering
+Flag: Structural issues that impede comprehension or practical use in field operations
+
+5. BEST PRACTICES ALIGNMENT
+Compare against federal SOP standards:
+	∙	DHS/ICE style guide compliance: Follows agency formatting and terminology conventions
+	∙	Administrative requirements: Proper authorities cited, effective dates, supersession language
+	∙	Version control: Clear indication this is final/official version
+	∙	Accessibility: Compliant with Section 508 (if digital distribution)
+	∙	Training implications: Are training or communication needs identified for rollout?
+	∙	Measurable outcomes: Can compliance be audited/measured?
+Flag: Deviations from federal best practices that could raise questions during ORAP review
+
+6. READABILITY & COMPREHENSION
+Test practical usability:
+	∙	Sentence length: Avoid overly complex sentences (15-20 words ideal for procedures)
+	∙	Paragraph structure: One main idea per paragraph
+	∙	Bullet/numbered lists: Used appropriately for sequential steps or multiple requirements
+	∙	Examples: Are illustrative examples provided where procedures are complex?
+	∙	Visual aids: Would flowcharts, decision trees, or tables improve clarity?
+	∙	Reading level: Appropriate for intended audience (field personnel, legal staff, executives)
+Flag: Sections that are unnecessarily difficult to understand or implement
+
+7. HIGH-STAKES CONSIDERATIONS
+Given media scrutiny and Congressional interest:
+	∙	Defensibility: Can every requirement be justified with policy/legal basis?
+	∙	Transparency: Does language suggest accountability and good governance?
+	∙	Equity/consistency: Are procedures applied uniformly without arbitrary distinctions?
+	∙	Legal exposure: Are there provisions that could be challenged or misrepresented?
+	∙	Public perception: How would this read in a news article or hearing testimony?
+Flag: Language or provisions that could become problematic under public/Congressional scrutiny
+
+Output Format
+Organize findings as follows:
+CRITICAL ISSUES (Must fix before ORAP submission)
+	∙	Issues that create compliance gaps, legal vulnerabilities, or implementation failures
+SUBSTANTIVE RECOMMENDATIONS (Strongly recommend addressing)
+	∙	Improvements that significantly enhance clarity, usability, or defensibility
+MINOR EDITS (Optional enhancements)
+	∙	Formatting, stylistic, or structural refinements
+POSITIVE OBSERVATIONS
+	∙	Strengths worth noting (especially for areas under likely scrutiny)
+
+Final Recommendation
+Provide one of the following:
+	1.	CLEARED FOR BLUE FOLDER - Ready for ORAP submission with only minor/optional edits
+	2.	CONDITIONAL CLEARANCE - Ready pending specific critical corrections
+	3.	REQUIRES REVISION - Substantive issues must be resolved before proceeding
+
+Provide the SOP document for review.
