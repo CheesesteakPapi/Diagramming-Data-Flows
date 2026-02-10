@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+
+# Node modules (if using Mermaid CLI)
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+*.html.backup
