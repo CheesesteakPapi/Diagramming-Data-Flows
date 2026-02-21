@@ -1,0 +1,73 @@
+flowchart LR
+  %% =========================
+  %% Reusable Training Ops Flow (Course → Session → Registration)
+  %% Includes optional lanes for Axon bulk user import + device issuance
+  %% =========================
+
+  %% ---------- Admin ----------
+  subgraph ADMIN[Admin (Before)]
+    A1[Create/Update Course\n(Courses list)\n- RequiresAxonAccount?\n- RequiresDeviceIssuance?\n- Default TDY loaner rules] --> A2[Create Session\n(CourseSessions list)\n- Date/Time, Location, Instructor, Capacity\n- Status: Planned]
+    A2 --> A3[Optional: Pre-load roster\n(Create Registrations rows)\nCheckInStatus=NotCheckedIn]
+    A3 --> A4[Open Session for check-in\nCourseSessions.Status: Planned → Live]
+  end
+
+  %% ---------- Registrar / Check-in ----------
+  subgraph REG[Registrar (Check-in)]
+    R1[Select Session (dropdown)\nFilter Registrations by SessionId] --> R2[Find attendee / Add walk-in\nCreate or open Registration]
+    R2 --> R3[Pick person (Person column)\nAuto-capture UPN\nUserUPN = Lower(UserPerson.UserPrincipalName)]
+    R3 --> R4[Set AttendeeType\nPermanent | TDY | TDY-HasHomeCamera]
+    R4 --> R5{TDY type?}
+    R5 -- Yes --> R6[Enter DetailStart/DetailEnd\n(DetailEnd required)]
+    R5 -- No --> R7[Skip detail dates]
+    R6 --> R8[Check In\nCheckInStatus: NotCheckedIn → CheckedIn]
+    R7 --> R8
+  end
+
+  %% ---------- Course toggles (branching gates) ----------
+  G1{Course.RequiresAxonAccount?}
+  G2{Course.RequiresDeviceIssuance?}
+
+  %% ---------- Device Issuance ----------
+  subgraph ITFO[ITFO / Issuer (Gear)]
+    I1[Issue device screen\nShow CheckedIn attendees] --> I2[Select attendee]
+    I2 --> I3[Scan device serial (AB4)\nValidate Devices.Status=Available]
+    I3 --> I4{AttendeeType = Permanent?}
+    I4 -- Yes --> I5[Create Assignment\nAssignmentType=Primary\nStart=Now\nStatus=Issued]
+    I4 -- No --> I6[Create Assignment\nAssignmentType=Loaner\nDueDate=DetailEnd\nStatus=Issued]
+    I5 --> I7[Update Devices row\nStatus: Available → Issued\nCurrentHolderUPN set]
+    I6 --> I7
+    I7 --> I8[Update Registration\nLoanerIssued=Yes/No\nLoanerSerial, LoanerDueDate\nRemoveLoanerAtEnd=Yes for TDY]
+  end
+
+  %% ---------- Axon Automation Lane ----------
+  subgraph AUTO[Automation (Axon Bulk Create/Update)]
+    B1[Build Batch (per session)\nSelect Registrations where:\nAxonUserStatus=NeedsCreate\nAND SessionId=current] --> B2[Create AxonJobs row\nJobType=BulkCreateUsers\nStatus=Queued\nPayload=CSV/JSON ref]
+    B2 --> B3[Execute Job\nGet OAuth token\nSubmit /users/import\nStatus: Submitted]
+    B3 --> B4[Poll queue + fetch results\nUpdate Job: Completed/Failed]
+    B4 --> B5[Write back per Registration\nAxonUserStatus:\nCreateQueued → Created/CreateFailed\nAxonImportJobId, LastError]
+  end
+
+  %% ---------- Returns / Closeout ----------
+  subgraph CLOSE[Closeout (Returns + Compliance)]
+    C1[Return device screen] --> C2[Scan device serial]
+    C2 --> C3[Find open Assignment\nStatus=Issued]
+    C3 --> C4[Mark returned\nAssignment.Status: Issued → Returned\nEndDateTime=Now]
+    C4 --> C5[Update Devices\nStatus: Issued → Available\nClear holder]
+    C5 --> C6[Update Registration\nLoanerReturned=Yes\nLoanerReturnDate=Now]
+    C7[Daily overdue job\nFind Registrations where:\nLoanerIssued=Yes AND LoanerReturned=No\nAND LoanerDueDate < Today\nNotify + report] --> C6
+  end
+
+  %% ---------- Wiring ----------
+  A4 --> R1
+  R8 --> G1
+  R8 --> G2
+
+  G2 -- Yes --> I1
+  G2 -- No --> C1
+
+  G1 -- Yes --> B1
+  G1 -- No --> C1
+
+  %% Optional: returns happen later for loaners
+  I8 --> C1
+  B5 --> C1
